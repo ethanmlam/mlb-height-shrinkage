@@ -1,51 +1,50 @@
 # MLB Height Shrinkage
 
-How much did MLB players "shrink" when measured for the 2026 ABS challenge system?
+How much did MLB players "shrink" when officially measured for the 2026 ABS (Automated Ball-Strike) challenge system?
 
-## The Data
+For the first time, players were measured shoes-off, back-against-the-wall. This project compares those real measurements against years of self-reported heights from Baseball Reference.
 
-For the 2026 season, MLB implemented the Automated Ball-Strike (ABS) challenge system. The strike zone is now calculated precisely based on each batter's measured height (27% to 53.5% of height). This meant players had to be officially measured—shoes off, back against the wall.
-
-For the first time, we have *actual* heights instead of the self-reported numbers teams have used for decades.
+**Live visualization:** [index.html](index.html)
 
 ## Key Findings
 
-- **711 players** analyzed
-- **127 heights changed** (17.9%)
-- **101 players shrunk**, 26 grew
-- **Average shrinkage: 1.03 inches**
+### 3-Year View (561 players with data in 2024, 2025, and 2026)
+- **176 players shrunk**, 38 grew, 347 stayed the same
+- Average shrinkage (for those who shrunk): **-1.31"**
+- 38.1% of players had a height change over the 3-year period
 
-### Biggest Shrinkage
+### 2-Year View (710 players with 2025 and 2026 data)
+- **101 players shrunk**, 25 grew, 584 stayed the same
+- Average shrinkage (for those who shrunk): **-1.03"**
+- 17.7% of players had a height change
 
-| Player | Old | New | Diff |
-|--------|-----|-----|------|
-| Bo Naylor | 6'0" | 5'9" | -3" |
-| Michael Lorenzen | 6'3" | 6'1" | -2" |
-| (99 more at -1") | | | |
+### Notable 3-Year Shrinkage (-3 inches)
+- **Bo Naylor** (C): 6'0" to 5'9"
+- **Bryson Stott** (SS): 6'3" to 6'0"
+- **Gleyber Torres** (2B): 6'1" to 5'10"
+- **Connor Wong** (C): 6'1" to 5'10"
 
-### Notable Shrinkage
-
-- Mookie Betts: 5'10" → 5'9"
-- Alex Bregman: 5'11" → 5'10"
-- Alec Bohm: 6'5" → 6'4"
-- Byron Buxton: 6'2" → 6'1"
-
-### Players Who Grew
-
-- Max Muncy: 5'10" → 6'0" (+2")
-- Elly De La Cruz: 6'5" → 6'6" (+1")
+### Interesting Patterns
+- 18 players had 2024 = 2026 height but a *different* 2025 height, suggesting Baseball Reference had typos or corrections in 2025 that didn't reflect reality
+- The 3-year view shows higher change rates because it captures cumulative drift in self-reported heights over time
 
 ## Data Sources
-
-- **2026 heights**: MLB Stats API (measured for ABS)
-- **2025 heights**: Baseball Reference roster pages via Wayback Machine (pre-ABS listed heights)
+- **2024 heights:** Baseball Reference (via Wayback Machine snapshots)
+- **2025 heights:** Baseball Reference (via Wayback Machine snapshots)
+- **2026 heights:** MLB Stats API (ABS-measured)
 
 ## Files
+| File | Description |
+|------|-------------|
+| `index.html` | Self-contained visualization with both datasets embedded |
+| `data.json` | 710 players, 2025 vs 2026 comparison |
+| `data_3year_clean.json` | 561 players with all 3 years (2024, 2025, 2026) |
+| `data.csv` | 710 player CSV export |
+| `data_3year.csv` | 561 player CSV with 3-year data |
 
-- `index.html` - Interactive visualization
-- `data.json` - Full dataset (JSON)
-- `data.csv` - Full dataset (CSV)
+## Notes
+- **Max Muncy fix:** There are two MLB players named Max Muncy (one born 1990, one born 2002). The 2024 scrape matched the wrong one, so Max Muncy was removed from the 3-year dataset to avoid incorrect comparisons.
+- The 2-year dataset (710 players) includes players who only appeared in 2025+2026, while the 3-year dataset (561 players) requires presence in all three years.
 
 ## Author
-
-[@ethanmlam](https://twitter.com/ethanmlam)
+Built by [@ethanmlam](https://twitter.com/ethanmlam)
